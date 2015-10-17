@@ -1,0 +1,52 @@
+{% api %}{% image %}{% video %}
+<div class='isinya' style="max-width:100%;">
+
+<p>Download {{ term }}. All of video/mp3 that appear on this page were found from internet. The WebMaster does not hold any Legal Rights of Ownership on them. We don't save/host this <b>{{ term }}</b> video/mp3 in our hosting. If by anyhow any of them is offensive to you, please Contact Us asking for the removal.</p>
+
+{% if videos.0.link != '' %}
+<p>
+
+<iframe class="youtube-player" type="text/html" style="width:100%;height:100%;overflow: hidden;" src="http://www.youtube.com/embed/{{ videos.0.link | get_video_id }}" frameborder="0"></iframe></p>
+{% endif %}
+<input type="hidden" name="IL_IN_TAG" value="2"/>
+<p>Another results of <b>{{ term }}</b></p>
+{% for ti, item in api %}
+{% for vi, video in videos %}
+{% if ti == vi %}
+<p>
+<div style="background-color: #F5F7FC; border: dotted 1px #D2D2CF; padding: 3px">
+<div style="margin-left:3px">
+<div style="margin:3px 0;">
+
+<table width="100%" border="0">
+<tr>
+<td width="13%" valign="top"><img src="http://img.youtube.com/vi/{{ video.link | get_video_id }}/default.jpg" hspace="2" align="left" width="85" height="55" /></a></td>
+<td width="3%" valign="top"></td>
+<td width="84%" valign="top">
+<a href="{{ video.title | build_permalink_for 'tag' }}" title="{{ video.title | remove '...' | trim | strtolower | ucfirst }}"><strong>{{ video.title | remove '...' | trim | strtolower | ucfirst }}</strong></a>
+
+</br>
+<a rel="nofollow "href="#" onclick="window.open ('http://savefrom.net/?url=http://www.youtube.com/watch?v={{ video.link | get_video_id }}')"><span style="-moz-border-radius: 5px; -webkit-border-radius: 5px; background: #F9C13C; border-radius: 10px; color: #555555; margin: 0px 0px 0 0; padding: 3px 3px;"><b>Download Video</b></span></a>
+
+<a title="Download MP3" href="#" rel="nofollow" onClick="window.open('/download.php?yt_vid={{ video.link | get_video_id }}&format=mp3','mywindow','width=445,height=130,scrollbars=no')"><span style="-moz-border-radius: 5px; -webkit-border-radius: 5px; background: #55D8FF; border-radius: 10px; color: #555555; margin: 0px 0px 0 0; padding: 3px 3px;"><b>Convert MP3</b></span></a>
+</td>
+</tr>
+</table>
+</div></div></div>
+</p>
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+</br>
+<div class="snippet">
+<div itemprop="name"><a itemprop="url" href="/"><strong>{{ term }}</strong></a>, category: <span itemprop="about">Music</span>
+<div style="background-color: #fcf8c0; border: dotted 3px #FF9900; padding: 5px;">
+<div itemprop="description">Song / Music / Video with title/name <strong>{{ term }}</strong> is delivered from Youtube and maybe containing a video's copy right. This web just only a search engine media, not a storage or cloud server from the file. We just linked the file or embed from Youtube then display them here to make visitor easy to find it.
+</div>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div style="clear: both"></div> 
